@@ -5,7 +5,7 @@ var wrong = 0;
 var na = 0;
 var intervalId;
 var answer = 'moe';
-var quiz = {
+var quiz = [{
   question: 'Who is not one of the three stooges?',
   answers: [{
     answer: 'Moe'
@@ -16,23 +16,40 @@ var quiz = {
     }, {
     answer: 'Larry'
     }]
-};
+  },
+    {
+    question: 'Which one of the following is not a princess?',
+    answers: [{
+      answer: 'Mulan'
+    }, {
+      answer: 'Elsa'
+    }, {
+      answer: 'Sophia'
+    }, {
+      answer: 'Snow White'
+    }]
+  
+}];
 
 intervalId = setInterval(count, 1000);
 function count() {
   time--;
-  console.log(time);
-  if (time === '0') {
-    time;
-  }
-}
-function timer(){
+  // console.log(time);
   $('#timer').html('<h2>Remaining Time: ' + time +'</h2>');
-};
+}
+// function timer(){
+//   $('#timer').html('<h2>Remaining Time: ' + time +'</h2>');
+// };
 function question() {
-  $('#questions').append('<h3>' + quiz.question + '</h3>');
-  for (i = 0; i < quiz.answers.length; i++) {
-    $('#questions').append('<h4>' + quiz.answers[i].answer + '</h4>').prop('checked', true);
+  $('#questions').append('<h3>' + quiz[1].question + '</h3>');
+  for (i = 0; i < quiz[1].answers.length; i++) {
+    $('#questions').append('<input type="radio" name="test" />').append('<h4>' + quiz[1].answers[i].answer + '</h4>');
+  }
+};
+function question1() {
+  $('#questions').append('<h3>' + quiz[0].question + '</h3>');
+  for (i = 0; i < quiz[0].answers.length; i++) {
+    $('#questions').append('<input type="radio" name="test" />').append('<h4>' + quiz[0].answers[i].answer + '</h4>');
   }
 };
 function results() {
@@ -52,7 +69,8 @@ $('#button').click(function() {
   $('#na').html('Questions with no answer: ' + na);
 });
 
-timer();
+// timer();
+question1();
 question();
 results();
 count();
