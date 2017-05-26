@@ -68,7 +68,7 @@ function question() {
     }
   }
 };
-function results()
+function results(){
   if ((answer === 'Excalibur') || (answer === 'Sam Tarly') || (answer === 'Jon')) {
     wins++;
   }
