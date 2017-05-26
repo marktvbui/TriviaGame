@@ -1,5 +1,5 @@
 $(document).ready(function() {
-var time = 5;
+var time = 15;
 var correct = 0;
 var wrong = 0;
 var na = 0;
