@@ -64,7 +64,7 @@ function question() {
   for (j = 0; j < quiz.length; j++) {
     $('#questions').append('<div><form><h3>' + quiz[j].question + '</h3></form></div>');
     for (i = 0; i < quiz[0].answers.length; i++) {
-      $('#questions').append('<input type="radio" name="answer"  />' + quiz[j].answers[i].answer + '<br />');
+      $('#questions').append('<form><input type="radio" name="answer"  />' + quiz[j].answers[i].answer + '<br />');
     }
   }
 };
