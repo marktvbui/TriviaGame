@@ -4,7 +4,7 @@ var correct = 0;
 var wrong = 0;
 var na = 0;
 var intervalId;
-var answer = 'moe';
+var answer = $('.radio').is(':checked');
 var quiz = [{
   question: 'Which is not a weapon in Game of Thrones?',
   answers: [{
@@ -55,6 +55,8 @@ function count() {
     $('#questions').append('<h3>Jon is not a Stark.</h3>');
     $('#results').css('visibility', 'visible');
     $('#button').css('visibility', 'hidden');
+    $('#correct').html('Correctly answered: ' + correct);
+    $('#wrong').html('Answered Wrong: ' + wrong);
   }
 }
 
@@ -66,7 +68,7 @@ function question() {
     }
   }
 };
-function results() {if($('#radio_button').is(':checked'))
+function results()
   if ((answer === 'Excalibur') || (answer === 'Sam Tarly') || (answer === 'Jon')) {
     wins++;
   }
