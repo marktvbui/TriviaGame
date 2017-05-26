@@ -1,59 +1,73 @@
 $(document).ready(function() {
-var time = 25;
+var time = 5;
 var correct = 0;
 var wrong = 0;
 var na = 0;
 var intervalId;
 var answer = 'moe';
 var quiz = [{
-  question: 'Who is not one of the three stooges?',
+  question: 'Which is not a weapon in Game of Thrones?',
   answers: [{
-    answer: 'Moe'
+    answer: 'Longclaw'
     }, {
-    answer: 'Joe'
+    answer: 'Honor'
     }, {
-    answer: 'Curly'
+    answer: 'Excalibur'
     }, {
-    answer: 'Larry'
+    answer: 'Ice'
     }]
   },
     {
-    question: 'Which one of the following is not a princess?',
+    question: 'Who is not a contender for the Throne?',
     answers: [{
-      answer: 'Mulan'
+      answer: 'Jon Snow'
     }, {
-      answer: 'Elsa'
+      answer: 'Daenerys Targaryen'
     }, {
-      answer: 'Sophia'
+      answer: 'Sam Tarly'
     }, {
-      answer: 'Snow White'
+      answer: 'Cersei Lannister'
     }]
-  
+  },
+  {
+  question: 'Who is not a Stark?',
+  answers: [{
+    answer: 'Jon'
+    }, {
+    answer: 'Bran'
+    }, {
+    answer: 'Sansa'
+    }, {
+    answer: 'Arya'
+    }]
 }];
 
 intervalId = setInterval(count, 1000);
 function count() {
-  time--;
-  // console.log(time);
+  if (time != 0){
+    time--;
   $('#timer').html('<h2>Remaining Time: ' + time +'</h2>');
+  }
+  if (time === 0) {
+    $('#timer').html('<h2>Time is UP!!!</h2>');
+    $('#questions').html('<h3>Excalibur is not a Weapon in Game of Thrones.</h3>');
+    $('#questions').append('<h3>Sam Tarly is not a contender for the Throne.</h3>');
+    $('#questions').append('<h3>Jon is not a Stark.</h3>');
+    $('#results').css('visibility', 'visible');
+    $('#button').css('visibility', 'hidden');
+  }
 }
-// function timer(){
-//   $('#timer').html('<h2>Remaining Time: ' + time +'</h2>');
-// };
+
 function question() {
-  $('#questions').append('<h3>' + quiz[1].question + '</h3>');
-  for (i = 0; i < quiz[1].answers.length; i++) {
-    $('#questions').append('<input type="radio" name="test" />').append('<h4>' + quiz[1].answers[i].answer + '</h4>');
+  for (j = 0; j < quiz.length; j++) {
+    $('#questions').append('<div><form><h3>' + quiz[j].question + '</h3></form></div>');
+    for (i = 0; i < quiz[0].answers.length; i++) {
+      $('#questions').append('<input type="radio" name="answer"  />' + quiz[j].answers[i].answer + '<br />');
+    }
   }
 };
-function question1() {
-  $('#questions').append('<h3>' + quiz[0].question + '</h3>');
-  for (i = 0; i < quiz[0].answers.length; i++) {
-    $('#questions').append('<input type="radio" name="test" />').append('<h4>' + quiz[0].answers[i].answer + '</h4>');
-  }
-};
-function results() {
-  if (answer === 'Joe') {
+function results() {if($('#radio_button').is(':checked'))
+  if ((answer === 'Excalibur') || (answer === 'Sam Tarly') || (answer === 'Jon')) {
     wins++;
   }
   else {
@@ -66,11 +80,9 @@ $('#button').click(function() {
   $('#container').css('visibility', 'hidden');
   $('#correct').html('Correctly answered: ' + correct);
   $('#wrong').html('Answered Wrong: ' + wrong);
-  $('#na').html('Questions with no answer: ' + na);
 });
 
 // timer();
-question1();
 question();
 results();
 count();
