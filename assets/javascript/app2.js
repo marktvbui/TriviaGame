@@ -31,6 +31,11 @@ var questions = [{
     answers: ['Eddard Stark', 'Tyrion Lannister', 'Jon Arryn', 'Samwell Tarley'],
     correctAnswer: 'Samwell Tarley',
     image: 'assets/images/samwell.gif'
+}, {
+    question: 'Which isnt a direwolf?',
+    answers: ['Ghost', 'Shaggydog', 'Lucky', 'Nymeria'],
+    correctAnswer: 'Lucky',
+    image: 'assets/images/direwolf.gif'
 }];
 
 var timer;
